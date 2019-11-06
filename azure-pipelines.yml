@@ -12,32 +12,43 @@ pool:
 stages:
 - stage: stgA
   jobs:
-  - job: JobA1
+  - deployment: jobA1 
     pool:
-      vmImage: 'Ubuntu 16.04'
-    steps:
-    - checkout: none
-    - script: echo A1!
-  - job: jobA2
+      vmImage: $(vmImageName)
+    environment: 'sampleEnvA1'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo A1!
+  - deployment: jobA2
     pool:
-      vmImage: 'Ubuntu 16.04'
-    steps:
-    - checkout: none
-    - script: echo A2!
+      vmImage: $(vmImageName)
+    environment: 'sampleEnvA2'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo A2!
 
 - stage: stgB
   dependsOn: stgA
   jobs:
-  - job: JobB1
+  - deployment: jobB1 
     pool:
-      vmImage: 'Ubuntu 16.04'
-    steps:
-    - checkout: none
-    - script: echo B1!
-  - job: JobB2
+      vmImage: $(vmImageName)
+    environment: 'sampleEnvB1'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo B1!
+  - deployment: jobB2
     pool:
-      vmImage: 'Ubuntu 16.04'
-    steps:
-    - checkout: none
-    - script: echo B2!
-
+      vmImage: $(vmImageName)
+    environment: 'sampleEnvB2'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo B2!
