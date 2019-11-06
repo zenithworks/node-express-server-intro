@@ -24,7 +24,7 @@ stages:
   - deployment: jobA2
     pool:
       vmImage: $(vmImageName)
-    environment: 'sampleEnvA2'
+    environment: 'sampleEnvA1'
     strategy:
       runOnce:
         deploy:
@@ -37,7 +37,7 @@ stages:
   - deployment: jobB1 
     pool:
       vmImage: $(vmImageName)
-    environment: 'sampleEnvB1'
+    environment: 'sampleEnvA1'
     strategy:
       runOnce:
         deploy:
@@ -46,7 +46,7 @@ stages:
   - deployment: jobB2
     pool:
       vmImage: $(vmImageName)
-    environment: 'sampleEnvB2'
+    environment: 'sampleEnvA1'
     strategy:
       runOnce:
         deploy:
