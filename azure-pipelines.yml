@@ -28,13 +28,13 @@ stages:
 - stage: stgB
   dependsOn: stgA
   jobs:
-  - job: B1
+  - job: JobB1
     pool:
       vmImage: 'Ubuntu 16.04'
     steps:
     - checkout: none
     - script: echo B1!
-  - job: B2
+  - job: JobB2
     pool:
       vmImage: 'Ubuntu 16.04'
     steps:
